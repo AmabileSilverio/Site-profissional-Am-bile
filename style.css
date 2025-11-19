@@ -3,7 +3,7 @@
   --secondary-color: #6C5CE7;
   --accent-color: #e74c3c;
   --text-color: #333;
-  --bg-light: #f8f9fa;
+  --bg-light: #F7F6FF;
 }
 
 body {
@@ -170,10 +170,23 @@ body {
   margin-bottom: 8px;
 }
 
+/*style das habilidades*/
+
 .progress {
-  height: 10px;
+  height: 30px;
   border-radius: 5px;
 }
+
+.progress-bar {
+  background-color: var(--secondary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
 
 /* Contact */
 .contact-info {
