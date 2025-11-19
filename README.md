@@ -16,7 +16,7 @@ Atualmente, estou cursando **Desenvolvimento de Software Multiplataforma (DSM) -
 
 Minha trajetória é marcada pela combinação da experiência em **Vendas** e o interesse por **Tecnologia**.
 
-* **Comunicação e Proatividade:** 3 anos de experiência em Vendas me equiparam com fortes habilidades de comunicação, facilidade em construir *rapport* e uma atitude proativa para resolução de problemas.
+* **Comunicação e Proatividade:** 7 anos de experiência em Vendas me equiparam com fortes habilidades de comunicação, facilidade em construir *rapport* e uma atitude proativa para resolução de problemas.
 * **Foco em Resultados:** Minha mentalidade de Vendas me orienta a sempre buscar a otimização de processos e a entrega de valor, garantindo que o software não apenas funcione, mas que atenda efetivamente às necessidades do usuário/cliente.
 
 ---
