@@ -229,3 +229,88 @@ footer {
   margin: 0 auto;
   padding: 20px;
 }
+
+/* Projetos */
+.project-card {
+  border: none;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+}
+
+.project-card .badge {
+  background-color: var(--secondary-color) !important;
+}
+
+.project-card .btn-outline-dark {
+  border-color: #000;
+  color: #000;
+}
+
+.project-card .btn-outline-dark:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Botão do formulário */
+form .btn-primary {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+form .btn-primary:hover {
+  background-color: #5a4dd4;
+  border-color: #5a4dd4;
+}
+
+form .form-control:focus {
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 0.25rem rgba(108, 92, 231, 0.25);
+}
+
+/* Mensagens de alerta do formulário */
+#mensagem-alerta {
+  margin-bottom: 20px;
+}
+
+#mensagem-alerta.alert-success {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  color: #155724;
+}
+
+#mensagem-alerta.alert-danger {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+}
+
+/* Validação de campos */
+.form-control.is-invalid {
+  border-color: #dc3545;
+}
+
+.form-control.is-invalid:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+}
+
+.form-control.is-valid {
+  border-color: #28a745;
+}
+
+.form-control.is-valid:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25);
+}
+
+/* Botão desabilitado */
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
