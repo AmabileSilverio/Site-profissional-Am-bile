@@ -107,40 +107,88 @@ document.addEventListener('DOMContentLoaded', function() {
       spinner.classList.remove('d-none');
       btnEnviar.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Enviando...';
 
-      // Preparar dados para envio
-      const formData = new FormData();
-      formData.append('nome', nome);
-      formData.append('email', email);
-      formData.append('assunto', assunto);
-      formData.append('mensagem', mensagem);
+      // Preparar dados para envio (usado tanto para fetch quanto para localStorage)
+      const payload = {
+        data: new Date().toISOString(),
+        nome: nome,
+        email: email,
+        assunto: assunto,
+        mensagem: mensagem,
+        origem: window.location.href
+      };
 
-      // Enviar via AJAX
-      fetch('enviar-contato.php', {
-        method: 'POST',
-        body: formData
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.success) {
-          showAlert('Mensagem enviada com sucesso! Entrarei em contato em breve.', 'success');
-          form.reset();
-          form.querySelectorAll('.form-control').forEach(input => {
-            input.classList.remove('is-valid');
-          });
-        } else {
-          showAlert(data.message || 'Erro ao enviar mensagem. Tente novamente.', 'danger');
+      // Função para exibir modal e reabilitar botão
+      function mostrarConfirmacaoComNome(nomeParaMostrar) {
+        const nomeUsuario = nomeParaMostrar.charAt(0).toUpperCase() + nomeParaMostrar.slice(1);
+        const mensagemPersonalizada = `Obrigada <strong>"${nomeUsuario}"</strong> pela mensagem, em breve entrarei em contato!`;
+        document.getElementById('mensagemModal').innerHTML = mensagemPersonalizada;
+        try {
+          const modalElement = document.getElementById('modalConfirmacao');
+          if (modalElement && window.bootstrap) {
+            const modal = new bootstrap.Modal(modalElement);
+            modal.show();
+            // Limpar formulário quando o modal for fechado
+            modalElement.addEventListener('hidden.bs.modal', function() {
+              form.reset();
+              // Remover classes de validação
+              form.querySelectorAll('.form-control').forEach(input => {
+                input.classList.remove('is-invalid', 'is-valid');
+              });
+            }, { once: true });
+          } else if (modalElement) {
+            // fallback simples: tornar visível se bootstrap não estiver presente
+            modalElement.classList.add('show');
+            modalElement.style.display = 'block';
+            form.reset();
+          }
+        } catch (error) {
+          console.error('Erro ao abrir modal:', error);
         }
-      })
-      .catch(error => {
-        console.error('Erro:', error);
-        showAlert('Erro ao enviar mensagem. Por favor, tente novamente mais tarde.', 'danger');
-      })
-      .finally(() => {
         // Reabilitar botão
         btnEnviar.disabled = false;
         spinner.classList.add('d-none');
         btnEnviar.innerHTML = 'Enviar';
-      });
+      }
+
+      // Tentar enviar para o PHP quando possível (servidor local). Se falhar, salvar em localStorage.
+      // Evitar chamada fetch em `file:` protocol (causa CORS/blocked).
+      if (window.location.protocol === 'file:') {
+        // Salvamento local imediato (apenas para demo no GitHub Pages ou quando aberto via file://)
+        salvarLocal(payload);
+        mostrarConfirmacaoComNome(nome);
+      } else {
+        // Tentar enviar para o backend PHP
+        const formData = new FormData();
+        formData.append('nome', nome);
+        formData.append('email', email);
+        formData.append('assunto', assunto);
+        formData.append('mensagem', mensagem);
+
+        fetch('enviar-contato.php', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => {
+          if (!response.ok) throw new Error('Resposta do servidor não OK');
+          return response.json();
+        })
+        .then(data => {
+          if (data && data.success) {
+            // servidor recebeu e processou; não é necessário salvar local, mas podemos opcionalmente guardar uma cópia
+            mostrarConfirmacaoComNome(nome);
+          } else {
+            // resposta inválida do backend -> fallback para salvar local
+            console.warn('Backend retornou erro ou formato inesperado, salvando localmente');
+            salvarLocal(payload);
+            mostrarConfirmacaoComNome(nome);
+          }
+        })
+        .catch(error => {
+          console.warn('Falha ao enviar ao backend (causa:', error, '), salvando em localStorage como fallback.');
+          salvarLocal(payload);
+          mostrarConfirmacaoComNome(nome);
+        });
+      }
     });
   }
 
@@ -173,6 +221,19 @@ document.addEventListener('DOMContentLoaded', function() {
       setTimeout(() => {
         mensagemAlerta.classList.add('d-none');
       }, 5000);
+    }
+  }
+
+  // Salvar contato no localStorage (fallback para ambientes sem PHP)
+  function salvarLocal(dados) {
+    try {
+      const chave = 'contatos_site_amabile';
+      const existentes = JSON.parse(localStorage.getItem(chave) || '[]');
+      existentes.push(dados);
+      localStorage.setItem(chave, JSON.stringify(existentes));
+      console.log('Contato salvo no localStorage (fallback).');
+    } catch (e) {
+      console.error('Erro ao salvar no localStorage:', e);
     }
   }
 });

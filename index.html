@@ -37,6 +37,9 @@
               <a class="nav-link" href="#projetos">Projetos</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="pessoal.html">Pessoal</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="#contato">Contato</a>
             </li>
           </ul>
@@ -46,7 +49,7 @@
     <!-- Hero Sectin -->
     <section class="hero-section">
       <div class="container-fluid p-0 hero-image">
-        <img src="fotoamabile.png" alt="Foto de Perfil" class="profile-img">
+        <img src="../img/fotoamabile.png" alt="Foto de Perfil" class="profile-img">
       </div>
       <div class="container hero-text text-center">
         <h1>Amábile Silvério</h1>
@@ -280,7 +283,7 @@
                   Página web com objetivos de cadastro, visualização e avaliação de projetos interdisciplinares (PI).
                 </p>
                 <div class="d-flex justify-content-between align-items-center">
-                  <small class="text-muted">HTML • CSS • PHP • JavaScript</small>
+                  <small class="text-muted">HTML • CSS • PHP • JavaScript • MySql</small>
                   <a href="https://github.com/GustavoRibeiro007/iniciacaocient.git" class="btn btn-sm btn-outline-dark">Ver projeto</a>
                 </div>
               </div>
@@ -289,14 +292,13 @@
           <div class="col-lg-6 mb-4">
             <div class="card project-card h-100">
               <div class="card-body">
-                <span class="badge bg-secondary mb-2">API</span>
-                <h5 class="card-title">Catálogo de Produtos</h5>
+                <span class="badge bg-secondary mb-2">Web</span>
+                <h5 class="card-title">Site currículo</h5>
                 <p class="card-text">
-                  Backend simples para cadastro e consulta de produtos com autenticação básica e documentação.
-                </p>
+                  Portfólio profissional com meus principais projetos, habilidades e experiências, desenvolvido para apresentar meu trabalho de forma clara e objetiva.                </p>
                 <div class="d-flex justify-content-between align-items-center">
-                  <small class="text-muted">PHP • MySQL</small>
-                  <a href="#" class="btn btn-sm btn-outline-dark">Ver projeto</a>
+                  <small class="text-muted">HTML • CSS • PHP • JavaScript • Bootstrap </small>
+                  <a href="https://github.com/AmabileSilverio/Site-profissional-Am-bile.git" class="btn btn-sm btn-outline-dark">Ver projeto</a>
                 </div>
               </div>
             </div>
@@ -304,7 +306,6 @@
         </div>
       </div>
     </section>
-
 
     <!-- Contato -->
     <section id="contato" class="section">
@@ -371,6 +372,24 @@
         </div>
       </div>
     </section>
+
+    <!-- Modal de Confirmação -->
+    <div class="modal fade" id="modalConfirmacao" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body text-center p-5">
+            <div class="mb-3">
+              <i class="bi bi-check-circle-fill" style="font-size: 3rem; color: #6f42c1;"></i>
+            </div>
+            <h5 class="modal-title mb-3" id="modalLabel">Mensagem Recebida!</h5>
+            <p id="mensagemModal" class="lead mb-0"></p>
+          </div>
+          <div class="modal-footer justify-content-center border-0">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Footer -->
     <footer>
