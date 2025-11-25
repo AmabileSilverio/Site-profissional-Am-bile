@@ -38,31 +38,4 @@ Embora o foco no estágio seja aprender e crescer, minhas áreas de maior intere
 * **Proatividade:** Iniciativa para identificar e resolver problemas.
 * **Foco no Cliente:** Capacidade de entender as necessidades do usuário final, transpondo essa visão para o desenvolvimento de produtos.
 
----
-
-## 🤝 Conecte-se Comigo
-
-* **LinkedIn:** 
-* **E-mail:** amabile.silverio34@gmail.com
-* **Acesso ao Site:** 
-
----
-
-## 📌 Como testar o formulário de contato
-
-O projeto suporta duas formas de demonstrar o envio de mensagens:
-
-- **Com PHP (local, usando XAMPP):** o arquivo `enviar-contato.php` processa o formulário e salva as mensagens no servidor (pasta `contatos/` e `contatos.log`). Para testar:
-	1. Instale e inicie o XAMPP (Apache + PHP).
- 2. Coloque este projeto em `C:/xampp/htdocs/site-profissional-amabile/`.
- 3. Acesse `http://localhost/site-profissional-amabile/Site-profissional-Am-bile/index.html` no navegador.
- 4. Envie uma mensagem pelo formulário — se o PHP estiver ativo, a mensagem será salva em `contatos/` no servidor.
-
-- **Sem PHP (GitHub Pages ou demonstração estática):** o formulário utiliza um *fallback* que salva os contatos no `localStorage` do navegador. Isso permite demonstrar o fluxo sem backend.
-	- Ao abrir pelo GitHub Pages (ou via `file://`), o envio será simulado e os contatos ficarão salvos localmente no navegador.
-	- Para visualizar os contatos salvos localmente, abra `contatos.html` na raiz do projeto (ex.: `https://seu-usuario.github.io/seu-repo/contatos.html`). Essa página lista os contatos do `localStorage` e permite exportar em JSON.
-
-## 🧭 Observações
-- Você pode manter o `enviar-contato.php` no repositório mesmo quando publicar no GitHub Pages — o arquivo apenas não será executado na Pages (hospedagem estática). O JavaScript detecta quando o backend não responde e faz o fallback automaticamente.
-
-Se quiser que eu atualize o texto do README com instruções personalizadas para o seu usuário do GitHub (URL do repositório), me passe o nome do repositório e eu ajusto.
+--
